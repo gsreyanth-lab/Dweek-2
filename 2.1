@@ -1,0 +1,37 @@
+===== PREPROCESSING (weather.numeric) =====
+Normalize (temperature)  min=64 max=85
+  85 -> 1.0000
+  80 -> 0.7619
+  83 -> 0.9048
+
+Discretize (temperature, 3 equal-width bins, width=7.000)
+  bin 0: (64.000 - 71.000]
+  bin 1: (71.000 - 78.000]
+  bin 2: (78.000 - 85.000]
+  temp=85 -> bin 2     temp=80 -> bin 2     temp=83 -> bin 2     temp=70 -> bin 0
+  ...
+
+Resample 50% without replacement: 7 of 14 instances
+  rows: 6 1 5 7 14 12 9
+
+===== ASSOCIATION RULES (weather.nominal) =====
+Minimum support count: 2 (0.14)
+Minimum confidence: 0.90
+
+Size of set of large itemsets L(1): 12
+Size of set of large itemsets L(2): 47
+Size of set of large itemsets L(3): 39
+Size of set of large itemsets L(4): 6
+
+Best rules found (58 total rules, showing top 10):
+
+ 1. temperature=cool 4 ==> humidity=normal 4          <conf:(1.00)> lift:(2.00)
+ 2. outlook=overcast 4 ==> play=yes 4                 <conf:(1.00)> lift:(1.56)
+ 3. humidity=normal windy=FALSE 4 ==> play=yes 4      <conf:(1.00)> lift:(1.56)
+ 4. temperature=cool play=yes 3 ==> humidity=normal 3 <conf:(1.00)> lift:(2.00)
+ 5. outlook=rainy play=yes 3 ==> windy=FALSE 3        <conf:(1.00)> lift:(1.75)
+ 6. outlook=rainy windy=FALSE 3 ==> play=yes 3        <conf:(1.00)> lift:(1.56)
+ 7. outlook=sunny play=no 3 ==> humidity=high 3       <conf:(1.00)> lift:(2.00)
+ 8. outlook=sunny humidity=high 3 ==> play=no 3       <conf:(1.00)> lift:(2.80)
+ 9. outlook=sunny temperature=hot 2 ==> humidity=high 2   <conf:(1.00)> lift:(2.00)
+10. outlook=rainy humidity=high 2 ==> temperature=mild 2  <conf:(1.00)> lift:(2.33)
